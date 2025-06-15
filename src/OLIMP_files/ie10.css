@@ -1,0 +1,96 @@
+/*стили для ие*/
+
+
+
+
+.ie10 .fav {
+    width: 18px;
+    height: 18px;
+    background: transparent url('/img/ie/favoriets.png') no-repeat;
+    background-size: cover;
+}
+.ie10 .fav.is_active,
+.ie10 .fav:hover {
+    background: transparent url('/img/ie/favoriets_h.png') no-repeat;
+    background-size: cover;
+}
+
+
+.ie10 .fav_big {
+    width: 26px;
+    height: 26px;
+    background: transparent url('/img/ie/favoriets.png') no-repeat center top;
+    background-size: cover;
+}
+.ie10 .fav_big.is_active,
+.ie10 .fav_big:hover {
+    background: transparent url('/img/ie/favoriets_h.png') no-repeat;
+    background-size: cover;
+}
+
+
+.ie10 .svg-ico-stat{
+    width: 18px;
+    height: 18px;
+    background: transparent url('/img/ie/statistic.png') no-repeat;
+    background-size: cover;
+}
+.ie10 .svg-ico-stat:hover {
+    background: transparent url('/img/ie/statistic_h.png') no-repeat;
+    background-size: cover;
+}
+
+.ie10 .svg-ico-tv{
+    width: 18px;
+    height: 18px;
+    background: transparent url('/img/ie/tv.png') no-repeat;
+    background-size: cover;
+}
+.ie10 .svg-ico-tv:hover {
+    background: transparent url('/img/ie/tv_h.png') no-repeat;
+    background-size: cover;
+}
+
+.ie10 .svg-ico-mt{
+    width: 18px;
+    height: 18px;
+    background: transparent url('/img/ie/soccer_field.png') no-repeat;
+    background-size: cover;
+}
+.ie10 .svg-ico-mt:hover {
+    background: transparent url('/img/ie/soccer_field_h.png') no-repeat;
+    background-size: cover;
+}
+.ie10 .svg-ico-mt_3{
+    width: 18px;
+    height: 18px;
+    background: transparent url('/img/ie/tennis_field.png') no-repeat;
+    background-size: cover;
+}
+.ie10 .svg-ico-mt_3:hover {
+    background: transparent url('/img/ie/tennis_field_h.png') no-repeat;
+    background-size: cover;
+}
+.ie10 .svg-ico-mt_5{
+    width: 18px;
+    height: 18px;
+    background: transparent url('/img/ie/basketball_field.png') no-repeat;
+    background-size: cover;
+}
+.ie10 .svg-ico-mt_5:hover {
+    background: transparent url('/img/ie/basketball_field_h.png') no-repeat;
+    background-size: cover;
+}
+
+.ie10 .iscashout {
+    width: 18px;
+    height: 18px;
+    background: transparent url('/img/ie/cash_out.png') no-repeat;
+    background-size: cover;
+
+}
+
+.ie10 .iscashout:hover{
+    background: transparent url('/img/ie/cash_out_h.png') no-repeat;
+    background-size: cover;
+}

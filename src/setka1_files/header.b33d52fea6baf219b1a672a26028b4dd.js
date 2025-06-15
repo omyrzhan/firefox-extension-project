@@ -1,0 +1,1 @@
+$(window).on("load",function(){var slider=$('.owl-carousel:not(".custom_owl_slider")');if(slider.length){slider.owlCarousel({autoplay:true,autoplayTimeout:6550,items:1,loop:true,dots:true,singleItem:true})}});

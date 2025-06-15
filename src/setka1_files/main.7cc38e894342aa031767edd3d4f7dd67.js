@@ -1,0 +1,1 @@
+$(function(){if($("#news-slider").length){var col_img=0;if($(window).width()>1430){col_img=2}else{col_img=1}$("#news-slider").carouFredSel({items:{visible:col_img,height:"51%"},responsive:true,auto:true,width:"100%",prev:"#prev-news",next:"#next-news",scroll:{items:1,duration:1e3,pauseOnHover:true}})}});

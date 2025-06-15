@@ -1,0 +1,219 @@
+.messageSection * {
+    box-sizing: border-box;
+}
+
+.messageTabs .tabs__content {
+    display: none; /* по умолчанию прячем все блоки */
+    border: 1px solid #c7c7c7;
+    border-top: none;
+}
+
+.messageTabs .tabs__content.activeTab {
+    display: block; /* по умолчанию показываем нужный блок */
+}
+
+.messageTabs .tabs__caption {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #6B0C17;
+}
+
+.messageTabs .tabs__caption li {
+    float: left;
+    text-transform: uppercase;
+    border-radius: 5px 5px 0 0;
+    padding: 10px;
+    margin: 0 1px 0 0;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #757575;
+}
+
+.messageTabs .tabs__caption li:hover,
+.messageTabs .tabs__caption li.activeTab {
+    background-color: #6B0C17;
+}
+
+.messageSection .accordion-container {
+    position: relative;
+}
+
+.messageSection .set {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.messageSection .set > .accTitle {
+    display: block;
+    padding: 10px 15px 10px 35px;
+    font-weight: bold;
+    color: #6B0C17;
+    text-decoration: none;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    background-color: #c7c7c7;
+    position: relative;
+}
+
+.messageSection .set:nth-child(2n) > .accTitle {
+    background-color: #d7d7d7;
+}
+
+.messageSection .set > .accTitle:before {
+    border: 6px solid transparent;
+    border-left: 6px solid #6B0C17;
+    border-rigth: none;
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 10px;
+    content: "";
+}
+
+.messageSection .set > .accTitle.active:before {
+    border: 6px solid transparent;
+    border-top: 6px solid #6B0C17;
+    border-bottom: none;
+    display: block;
+    position: absolute;
+    left: 10px;
+    top: 13px;
+    content: "";
+}
+
+.messageSection .set > .accTitle .name {
+    float: left;
+    display: inline-block;
+    width: 80%;
+}
+
+.messageSection .set > .accTitle .time {
+    float: right;
+    display: inline-block;
+}
+
+.messageSection .MessAccContent {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    display: none;
+    padding: 10px;
+}
+
+.messageSection .MessAccContent p {
+    margin: 0 0 10px 0;
+}
+
+.messageSection .docTypeInfo {
+    border-top: 1px solid #000000;
+    padding: 10px 0;
+}
+
+.messageSection .docTypeInfo .docInputField {
+    float: left;
+    margin: 0 40px 0 0;
+}
+
+.messageSection .docTypeInfo .docInputField input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #c6c6c6;
+    font-size: 14px;
+    width: 300px;
+    margin: 0 0 10px 10px;
+}
+
+.messageSection .controls {
+    text-align: center;
+}
+
+.messageSection .controls button {
+    font-size: 14px;
+    min-width: 200px;
+}
+
+.bets-history-link {
+    background: url("../img/history_yellow.svg") 0 1px no-repeat;
+    color: #c7c7c7;
+    line-height: 18px;
+    margin: 0 15px 0 0;
+    padding: 0 0 1px 22px;
+    font-size: 12px;
+    text-decoration: none;
+    display: inline-block;
+    width: 105px;
+    background-size: 22px auto;
+}
+
+.bets-history-link:hover,
+.bets-history-link:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+.get-message-link {
+    /*background: url("../img/message.svg") 0 2px no-repeat;*/
+    color: #c7c7c7;
+    line-height: 18px;
+    margin: 0 15px 0 0;
+    padding: 0 0 1px 24px;
+    font-size: 12px;
+    text-decoration: none;
+    display: inline-block;
+    background-size: 19px;
+    font-weight: normal;
+    position: relative;
+}
+
+.get-message-link::before,
+.get-message-link::after {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: -1px;
+    background-size: 100% 100%;
+    width: 25px;
+    height: 21px;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+.get-message-link::before {
+    background-image: url(../img/message-info-icon.png);
+    z-index: 0;
+}
+
+.get-message-link.has-message::before {
+    background-image: url(../img/message-info-icon1.png);
+    animation-name: messageBlink1;
+}
+
+.get-message-link.has-message::after {
+    background-image: url(../img/message-info-icon2.png);
+    animation-name: messageBlink2;
+    opacity: 0;
+    z-index: 1;
+}
+
+@keyframes messageBlink1 {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes messageBlink2 {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.get-message-link:hover,
+.get-message-link:focus {
+    color: #fff;
+    text-decoration: none;
+}
+

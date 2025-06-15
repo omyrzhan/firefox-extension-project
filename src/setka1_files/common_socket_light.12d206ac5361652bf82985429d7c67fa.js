@@ -1,0 +1,1 @@
+function getCurrDate(need_time_stamp){need_time_stamp=need_time_stamp||false;var time=null;$.ajax({url:"getservertime",type:"get",async:false,dataType:"text",success:function success(request){time=need_time_stamp?Number(request)*1e3:new Date(Number(request)*1e3)}});return time}function getRefId(){return typeof IFRAME_REF_ID!=="undefined"?IFRAME_REF_ID:window.CONFIG.ref_id}
