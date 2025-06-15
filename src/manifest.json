@@ -16,7 +16,7 @@
   "content_scripts": [
     {
       "matches": ["https://1xbet.kz/*", "https://olimpbet.kz/*"],
-      "js": ["contento.js"]
+      "js": ["contentu.js"]
     }
   ],
   "browser_action": {

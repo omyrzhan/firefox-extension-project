@@ -5,32 +5,42 @@ const sites = {
     'olimpbet': 'https://olimpbet.kz'
 };
 
-let olimpData = null;
+let latestOlimpTrsData = null;
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.action === 'fetchData') {
-        const site = request.site;
-        if (sites[site]) {
-            fetchDataFromSite(sites[site])
-                .then(data => sendResponse({ success: true, data }))
-                .catch(error => sendResponse({ success: false, error: error.message }));
-            return true; // Indicates that the response will be sent asynchronously
-        }
+// Listen for messages from content scripts
+browser.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+    // Store TRS data from olimpbet.kz
+    if (msg.type === "OLIMP_TRS_DATA") {
+        latestOlimpTrsData = msg.data;
+        // Forward to all 1xbet.kz tabs
+        browser.tabs.query({ url: "*://*.1xbet.kz/*" }).then(tabs => {
+            for (const tab of tabs) {
+                browser.tabs.sendMessage(tab.id, { type: "olimptrsdata", trsdata: latestOlimpTrsData });
+            }
+        });
+        sendResponse({ status: "FORWARDED_TO_1XBET" });
+        return true;
     }
-    if (request.type === "OLIMP_DATA") {
-        olimpData = request.payload;
-        // Optionally, notify tabs on 1xbet.kz that new data is available
-    }
-    if (request.type === "REQUEST_OLIMP_DATA") {
-        sendResponse({ data: olimpData });
+    // Receive selected events from 1xbet.kz
+    if (msg.type === "SELECTED_EVENTS_FROM_1XBET") {
+        console.log("Selected events from 1xbet.kz:", msg.selectedEvents);
+        sendResponse({ status: "RECEIVED" });
+        return true;
     }
 });
 
-async function fetchDataFromSite(url) {
-    const response = await fetch(url);
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
+// Periodically ask olimpbet.kz to collect TRS data
+setInterval(() => {
+    browser.tabs.query({ url: "*://*.olimpbet.kz/*" }).then(tabs => {
+        for (const tab of tabs) {
+            browser.tabs.sendMessage(tab.id, { type: "COLLECT_OLIMP_TRS_DATA" });
+        }
+    });
+}, 5 * 60 * 1000); // every 5 minutes
+
+// Optionally, trigger once on startup
+browser.tabs.query({ url: "*://*.olimpbet.kz/*" }).then(tabs => {
+    for (const tab of tabs) {
+        browser.tabs.sendMessage(tab.id, { type: "COLLECT_OLIMP_TRS_DATA" });
     }
-    const data = await response.text();
-    return data; // You can parse this data as needed
-}
+});
